@@ -11,4 +11,10 @@ public class Payment {
 	{
 		return "paynow";
 	}
+	
+	@RequestMapping("/paid")
+	public String paid()
+	{
+		return "thanks";
+	}
 }

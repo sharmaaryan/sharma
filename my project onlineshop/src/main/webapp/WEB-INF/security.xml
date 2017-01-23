@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:security="http://www.springframework.org/schema/security" 
+xsi:schemaLocation="http://www.springframework.org/schema/beans 
+http://www.springframework.org/schema/beans/spring-beans.xsd 
+http://www.springframework.org/schema/security 
+http://www.springframework.org/schema/security/spring-security.xsd">
+       
+ <!-- New Spring Security implementation -->  
+<security:http auto-config="true"> 
+<security:intercept-url access="ROLE_ADMIN" pattern="/admin"/> 
+<security:intercept-url access="ROLE_USER" pattern="/user"/> 
+
+<security:form-login password-parameter="password" username-parameter="username" authentication-failure-url="/loginUser?error" default-target-url="/" login-page="/login"/>
+
+<security:logout logout-success-url="/loginUser?logout"/> 
+
+<!-- enable csrf protection  -->
+<!-- <security:csrf disabled="true"/> --> 
+</security:http> 
+<security:authentication-manager> 
+<security:authentication-provider> 
+
+<security:jdbc-user-service data-source-ref="dataSource" 
+users-by-username-query="SELECT name, password, id FROM User WHERE name = ?" 
+authorities-by-username-query="SELECT name,role,id From User WHERE name = ?" />
+</security:authentication-provider>
+</security:authentication-manager>
+   
+    
+</beans>

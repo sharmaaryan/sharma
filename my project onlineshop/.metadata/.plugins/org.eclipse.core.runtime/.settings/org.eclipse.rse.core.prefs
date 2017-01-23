@@ -1,0 +1,4 @@
+activeuserprofiles=Admin;BLR-MSM-MR03-10;Team
+eclipse.preferences.version=1
+org.eclipse.rse.systemtype.local.systemType.defaultUserId=MRuser
+useridperkey=Admin.Local\=MRuser;BLR-MSM-MR03-10.Local\=MRuser;
